@@ -23,7 +23,7 @@
     	<div class="header">
 			<div class="row">
 				<div class="col-xs-12">
-					<a class="logo" href="<?php bloginfo("url");?>"><img src="<?php bloginfo("stylesheet_directory");?>/images/logo.png" alt=""></a>
+					<a class="logo" href="<?php bloginfo("url");?>"><img src="<?php bloginfo("stylesheet_directory");?>/images/Logo.png" alt=""></a>
 					<nav class="navbar  ">
 					    <!-- Brand and toggle get grouped for better mobile display -->
 					    <div class="navbar-header hidden-lg hidden-md hidden-sm">
@@ -83,8 +83,8 @@
             </div>
       </div>
       <div class="ci-intro-bar">
-	        <p>Neventore <span>Contact-Immo</span> et quasi architecto beatae vitae dicta sunt explicabo</p>
-	        <a href="#">Entrer chez vous !</a>
+      	<p>Notre agence est présente au coeur de Colmar <span> depuis 1999 </span></p>
+      	<a href="#">Entrer chez vous !</a>
 	   </div>
 </div>
 <section class="monprojet">
@@ -227,12 +227,13 @@
 					    if( !empty($image) ): ?>
 					        <img width="100%" class="img-responsive center-block" src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt'];  ?>" />
 					    <?php endif; ?>
-
 	                </div>
 	            </div>
 			</div>
 			<?php   $i++ ; endwhile; ?>
+			<a href="" class="voirplus">VOIR TOUS</a>
 		</div>	
+
     </div>
 </section>
 <section id="contact">
@@ -242,7 +243,7 @@
 	 <div class="container infocontact">
 		<div class="uk-grid">
 			<div class="uk-width-1-2">
-				<a class="logocontact" href="<?php bloginfo("url");?>"><img src="<?php bloginfo("stylesheet_directory");?>/images/logo.png" alt=""></a>
+				<a class="logocontact" href="<?php bloginfo("url");?>"><img src="<?php bloginfo("stylesheet_directory");?>/images/Logo.png" alt=""></a>
 				<ul class="reseau">
 					<li><a href=""><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
 					<li><a href=""><i class="fa fa-twitter" aria-hidden="true"></i></a></li>

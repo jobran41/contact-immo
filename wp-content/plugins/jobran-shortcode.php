@@ -25,4 +25,48 @@ if ( $post_type_object->hierarchical ) {
     }
 }
 }
+
+// create shortcode with parameters so that the user can define what's queried - default is to list all blog posts
+add_shortcode('load_box_produits', 'rmcc_post_listing_parameters_shortcode');
+function rmcc_post_listing_parameters_shortcode($atts) {
+    ob_start();
+    ($attr['parent_id'])? $parent_id = $attr['parent_id'] : $parent_id = 0;
+    $post_parent = get_post($parent_id);
+
+    // define query parameters based on attributes
+
+    extract(shortcode_atts(array(
+        'type' => 'post',
+        'types' => 'posts',
+        ), $atts));
+    
+
+    $options = array(
+        'post_type' => $type,
+        'posts_per_page' => -1,
+        'post_parent' => $types,
+    );
+
+   // if(isset($_GET['token'])) echo '<pre>'.print_r($produits,true).'</pre>';
+
+    $query = new WP_Query($options);
+    // run the loop based on the query
+    if ($query->have_posts()) {
+        ?>
+        <ul class="clothes-listing ">
+            <?php while ($query->have_posts()) : $query->the_post(); ?>
+
+              <?php // print_r($post) ;
+              the_title();
+              ?>
+
+            <?php endwhile;
+            wp_reset_postdata();
+            ?>
+        </ul>
+        <?php
+        $myvariable = ob_get_clean();
+        return $myvariable;
+    }
+}
 ?>

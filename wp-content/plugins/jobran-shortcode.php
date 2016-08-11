@@ -53,14 +53,71 @@ function rmcc_post_listing_parameters_shortcode($atts) {
     // run the loop based on the query
     if ($query->have_posts()) {
         ?>
-        <ul class="clothes-listing ">
-            <?php while ($query->have_posts()) : $query->the_post(); ?>
-
-              <?php // print_r($post) ;
-              the_title();
-              ?>
-
-            <?php endwhile;
+            <div class="uk-grid-width-small-1-2 uk-grid-width-medium-1-3" data-uk-grid="{gutter: 20}">
+            <?php $i=0; while ($query->have_posts()) : $query->the_post(); ?>
+            <div class="img<?php echo $i ; ?> jsgrid">
+                <div class="uk-thumbnail uk-overlay-hover" data-uk-modal="{target:'#modal-<?php echo $i ; ?>'}">
+                        <figure class="uk-overlay">
+                          <?php $image = get_field('bigimg');
+                      if( !empty($image) ): ?>
+                          <img width="100%" class="img-responsive center-block" src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt'];  ?>" />
+                      <?php endif; ?>
+                          <figcaption class="uk-overlay-panel uk-overlay-icon uk-overlay-background uk-overlay-fade"></figcaption>
+                            <a class="uk-position-cover" href="#"></a>
+                        </figure>
+                        <a href="<?php  the_permalink();?>" class="captionprojet">
+                          <h4 class="titleportfolio"><?php  the_title();?></h4>
+                        </a>
+                    </div>
+                    <div id="modal-<?php echo $i ; ?>" class="uk-modal popupstyle" aria-hidden="true" style="display: none; overflow-y: scroll;">
+                        <div class="uk-modal-dialog uk-modal-dialog-large">
+                            <a href="" class="uk-modal-close uk-close uk-close-alt"></a>
+                            <div class="uk-grid">
+                             <div class="uk-width-medium-1-2">
+                               <div data-uk-slideshow data-uk-check-display class="slidehowpop">
+                                    <ul class="uk-slideshow" >
+                                        <li >
+                                           <img src="http://unsplash.it/600/400">
+                                        </li>
+                                        <li >
+                                            <img src="http://unsplash.it/600/401">
+                                        </li>
+                                        <li >
+                                            <img src="http://unsplash.it/600/402">
+                                        </li>
+                                    </ul>
+                                    <ul class="uk-grid uk-grid-width-1-3 thamnail">
+                                      <li><a data-uk-slideshow-item="0" class="uk-active"><img src="http://unsplash.it/600/400"></a></li>
+                                      <li><a data-uk-slideshow-item="1"><img src="http://unsplash.it/600/401"></a></li>
+                                       <li><a data-uk-slideshow-item="2"><img src="http://unsplash.it/600/402"></a></li>
+                                    </ul>
+                                    <a  class="leftsl btnslid" href="" data-uk-slideshow-item="previous"><</a>
+                                    <a class="rightsl btnslid" href="" data-uk-slideshow-item="next">></a>
+                                </div>
+                             </div>
+                             <div class="uk-width-medium-1-2 poptextstyle">
+                              <h2><?php the_title(); ?></h2>
+                              <ul>
+                                <li>Appartement</li>
+                                <li>132 m² environ</li>
+                                <li>3 pièce</li>
+                              </ul>
+                              <h4>Les + du bien</h4>
+                              <p>
+                                Maecenas eros mi, la cinia eu ultricies vel, elementum et justo. Ut at tortor a odio vestibulum suscipit non sit amet dolor. Morbi molestie magna nec metus facilisis, at iaculis mi adipiscing. Praesent ac diam 
+                              </p>
+                              <h4>Descriptif du bien</h4>
+                              <p>
+                                Maecenas eros mi, la cinia eu ultricies vel, elementum et justo. Ut at tortor a odio vestibulum suscipit non sit amet dolor. Morbi molestie magna nec metus facilisis, at iaculis mi adipiscing. Praesent ac diam 
+Maecenas eros mi, la cinia eu ultricies vel, elementum et justo. Ut at tortor a odio vestibulum suscipit non sit amet dolor. Morbi molestie magna nec metus facilisis, at iaculis mi adipiscing. Praesent ac diam 
+                              </p>
+                              <a href="">réserver pour visite</a>
+                            </div>
+                           </div>
+                        </div>
+                    </div>
+              </div>
+            <?php $i++ ; endwhile;
             wp_reset_postdata();
             ?>
         </ul>

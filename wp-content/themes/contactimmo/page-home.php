@@ -15,7 +15,17 @@
 	            <a href="" class="signin">
 	                <i class="fa fa-user"></i> 
 	                S'identifier
-	            </a>
+	            </a>    
+	            <div class="login-page" >
+				  <div class="form"  >
+				    <form class="login-form" class="log">
+				      <input type="text" placeholder="ADRESSE E-MAIL"/>
+				      <input type="password" placeholder="MOT DE PASSE"/>
+				      <span>Mot de passe oublié ?</span>
+				      <button>connexion</button>
+				    </form>
+				  </div>
+				</div>
 	        </div>
 		</div>
 	</div>
@@ -93,11 +103,12 @@
 		    <ul class="uk-grid uk-grid-width-1-2 uk-grid-width-medium-1-3 uk-grid-width-large-1-5 mesprojet">
 			    <?php $documents = new WP_Query(array(
 					'post_type' => 'projet',
-					'showposts' => 5
+					'showposts' => 5,
+					'post_parent' => 0
 					)) ;?>
 					<?php while ($documents->have_posts()) : $documents->the_post(); ?>
 					<li>
-						<a href="" class="blockprojet">
+						<a href="<?php the_permalink(); ?>" class="blockprojet">
 					    	<div class="panel-heading">
 				                <span class="maisons">
 				                	<?php $image = get_field('smallimg');
